@@ -21,7 +21,7 @@ function App() {
             <Route path='/project/:id' element={<ProjectScreen />} />
             {/*<Route path='/create_project' element={<ProjectCreateScreen />} exact />*/}
             {/*<Route path='/create_task' element={<TaskCreateScreen />} exact />*/}
-            {/*<Route path='/user/:id' element={<UserListScreen />} />*/}
+            <Route path='/user/:id' element={<UserListScreen />} />
             {/*<Route path='/create_user' element={<UserCreateScreen />} exact />*/}
           </Routes>
         </Container>

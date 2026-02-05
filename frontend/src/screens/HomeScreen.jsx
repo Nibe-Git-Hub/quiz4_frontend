@@ -4,7 +4,7 @@ import Project from '../components/Project'
 import axios from 'axios'
 
 function HomeScreen() {
-  const project = [
+  const projects = [
     { name: 'Project 1' },
     { name: 'Project 2' },
     { name: 'Project 3' },
