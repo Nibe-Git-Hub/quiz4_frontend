@@ -133,6 +133,29 @@ If you have never used Postman before, follow these steps exactly:
 * `/src/pages`: Main views (Home, Quiz View, Results).
 * `/src/services`: API call logic using `fetch` or `axios`.
 
-Would you like me to generate a sample `App.js` or a specific service file to handle these API calls?
+## 🚀 Features
 
-By the way, to unlock the full functionality of all Apps, enable [Gemini Apps Activity](https://myactivity.google.com/product/gemini).
+* **[NEW] User List View**: Easily browse through all registered users in a clean, responsive list format.
+* **Search & Filter**: (Optional: add if you implemented search) Quickly find specific users by name or role.
+* **User Details**: Click on any user to view their full profile and activity.
+
+## 📸 Screenshots
+
+### User List View
+![User List View Screenshot](path/to/your/screenshot.png)
+*A clean interface to manage and view all users.*
+
+## 🛠 Usage
+
+To access the user list, navigate to the `/users` (or your specific route) endpoint. 
+
+```javascript
+// Example: How to fetch the user list in your app
+import { UserList } from './components/UserList';
+
+function App() {
+  return (
+    <UserList />
+  );
+}
+
