@@ -6,11 +6,17 @@ import project from '../components/Project'
 function ProjectScreen() {
     const { id } = useParams()
     const project = [
-    { name: 'Project 1' },
-    { name: 'Project 2' },
-    { name: 'Project 3' },
-    { name: 'Project 4' },
-  ]
+        { name: 'Project 1' },
+        { name: 'Project 2' },
+        { name: 'Project 3' },
+        { name: 'Project 4' },
+    ]
+    const task = [
+        {name:'Task 1'},
+        {name:'Task 2'},
+        {name:'Task 3'},
+        {name:'Task 4'},
+    ]
     const Project = project.find((p) => p.id === id)
   return (
     <div>
@@ -19,7 +25,9 @@ function ProjectScreen() {
         </Link>
 
         <Col md={6}>
-            {project.name}
+            <strong>
+                {project.name}
+            </strong>
         </Col>   
         
         <Col md={3}>
@@ -42,6 +50,36 @@ function ProjectScreen() {
 
                 <ListGroupItem>
                     {project.end_date}
+                </ListGroupItem>
+            </ListGroup>
+        </Col>
+
+        <Col md={6}>
+            <strong>
+                {task.name}
+            </strong>
+        </Col>   
+        
+        <Col md={3}>
+            <ListGroup variant="flush">
+                <ListGroupItem>
+                    {task.description}
+                </ListGroupItem>
+
+                <ListGroupItem>
+                    {task.status}
+                </ListGroupItem>
+
+                <ListGroupItem>
+                    {'{task.hours_consumed} hours'}
+                </ListGroupItem>
+
+                <ListGroupItem>
+                    {task.start_date}
+                </ListGroupItem>
+
+                <ListGroupItem>
+                    {task.end_date}
                 </ListGroupItem>
             </ListGroup>
         </Col>
