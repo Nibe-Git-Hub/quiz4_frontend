@@ -1,5 +1,6 @@
 import { Row, Col } from 'react-bootstrap'
 import Project from '../components/Project'
+import projects from '../components/Project'
 
 function HomeScreen() {
   const projects = [
@@ -8,7 +9,6 @@ function HomeScreen() {
     { name: 'Project 3' },
     { name: 'Project 4' },
   ]
-
   return (
     <div>
       <h1>Projects</h1>
