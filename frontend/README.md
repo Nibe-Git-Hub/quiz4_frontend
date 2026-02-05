@@ -1,72 +1,138 @@
-# Getting Started with Create React App
+Backend: https://github.com/Rolian-Sarmiento/quiz4_backend
 
-**After cloning the project, run `npm install` to install the dependencies.**
+This README is designed for a React-based frontend that interacts with a Quiz application backend. Since this is the `quiz4_frontend`, the primary focus is on how it consumes API endpoints and how you can test those underlying services.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+---
 
-## Available Scripts
+# 🧠 Quiz Application - Frontend
 
-In the project directory, you can run:
+This repository contains the frontend implementation for the Quiz application. It provides a user interface for browsing quiz categories, answering questions, and viewing results.
 
-### `npm start`
+## 🚀 Getting Started
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Prerequisites
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+* **Node.js** (v16 or higher recommended)
+* **npm** or **yarn**
 
-### `npm test`
+### Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. **Clone the repository:**
+```bash
+git clone https://github.com/Nibe-Git-Hub/quiz4_frontend.git
+cd quiz4_frontend
 
-### `npm run build`
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. **Install dependencies:**
+```bash
+npm install
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+3. **Start the development server:**
+```bash
+npm start
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+The app will typically run on `http://localhost:3000`.
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🛠 API Endpoints & Testing (Postman)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The frontend communicates with a backend API (usually running on `http://localhost:5000` or `8080`). Below are the core endpoints and how to test them using **Postman**.
 
-### Code Splitting
+### 1. Fetch All Quizzes
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+* **Method:** `GET`
+* **Endpoint:** `/api/quizzes`
+* **Description:** Retrieves a list of all available quiz categories and metadata.
+* **Postman Step-by-Step:**
+1. Open Postman and click **New > HTTP Request**.
+2. Change the method dropdown to **GET**.
+3. Paste the URL: `http://localhost:5000/api/quizzes`
+4. Click **Send**. You should see a JSON array of quizzes.
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+### 2. Get Specific Quiz Questions
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+* **Method:** `GET`
+* **Endpoint:** `/api/quizzes/{quiz_id}/questions`
+* **Description:** Fetches the questions and multiple-choice options for a specific quiz.
+* **Postman Step-by-Step:**
+1. Set method to **GET**.
+2. Use URL: `http://localhost:5000/api/quizzes/1/questions` (Replace `1` with a valid ID).
+3. Click **Send**.
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
+### 3. Submit Quiz Results
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+* **Method:** `POST`
+* **Endpoint:** `/api/quizzes/submit`
+* **Description:** Sends the user's answers to the server to be graded.
+* **Postman Step-by-Step:**
+1. Set method to **POST**.
+2. Enter URL: `http://localhost:5000/api/quizzes/submit`
+3. Click the **Body** tab below the URL bar.
+4. Select **raw** and change the format (on the right) to **JSON**.
+5. Paste a sample payload:
+```json
+{
+  "quiz_id": 1,
+  "answers": [
+    {"question_id": 101, "selected_option": "A"},
+    {"question_id": 102, "selected_option": "C"}
+  ]
+}
 
-### `npm run build` fails to minify
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+6. Click **Send**.
+
+
+
+---
+
+## 🧪 Detailed Postman Instructions (Spoon-fed Edition)
+
+If you have never used Postman before, follow these steps exactly:
+
+1. **Install Postman:** Download it from [postman.com](https://www.postman.com/).
+2. **Create a Workspace:** Click "Workspaces" -> "My Workspace".
+3. **The Request Bar:**
+* **Left Side:** Choose your "Verb" (GET for fetching data, POST for sending/saving data).
+* **Middle:** Type the address (e.g., `http://localhost:5000/...`).
+
+
+4. **The "Body" Tab (Only for POST):**
+* You cannot send data in a GET request. For POST, click "Body", then the "raw" radio button, and ensure the blue text says "JSON".
+* **Crucial:** If your JSON is red or has a red "X", you have a typo (like a missing comma).
+
+
+5. **Check the Response:**
+* Once you hit **Send**, look at the bottom pane.
+* **Status 200 OK:** Success!
+* **Status 404:** The URL is wrong.
+* **Status 500:** The backend crashed or isn't running.
+
+
+
+---
+
+## 📁 Project Structure
+
+* `/src/components`: UI components (Buttons, Cards, Modals).
+* `/src/pages`: Main views (Home, Quiz View, Results).
+* `/src/services`: API call logic using `fetch` or `axios`.
+
+Would you like me to generate a sample `App.js` or a specific service file to handle these API calls?
+
+By the way, to unlock the full functionality of all Apps, enable [Gemini Apps Activity](https://myactivity.google.com/product/gemini).

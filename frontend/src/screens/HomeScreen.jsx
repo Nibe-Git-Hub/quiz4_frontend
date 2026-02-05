@@ -1,9 +1,10 @@
+import React, {useState , useEffect} from 'react'
 import { Row, Col } from 'react-bootstrap'
 import Project from '../components/Project'
-import projects from '../components/Project'
+import axios from 'axios'
 
 function HomeScreen() {
-  const projects = [
+  const project = [
     { name: 'Project 1' },
     { name: 'Project 2' },
     { name: 'Project 3' },
