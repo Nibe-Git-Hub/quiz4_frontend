@@ -1,4 +1,5 @@
 import { Row, Col } from 'react-bootstrap'
+import Project from '../components/Project'
 
 function HomeScreen() {
   const projects = [
@@ -14,7 +15,7 @@ function HomeScreen() {
       <Row>
         {projects.map(project=> (
           <Col key={project._id} sm={12} md={6} lg={4} xl={3}>
-            <h3>{project.name}</h3>
+            <Project project={project} />
           </Col>
         ))}
       </Row>
